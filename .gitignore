@@ -4,3 +4,5 @@ folio/.idea/.name
 folio/.idea/folio.iml
 
 *.xml
+
+folio/folio/localsettings.py
