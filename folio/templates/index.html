@@ -212,7 +212,8 @@
                 <div class="col-xs-12 col-sm-5 col-md-5 col-lg-12">
                     <h3>About Folio</h3>
 
-                    <p>Folio has helped several computer science students to learn new skills by providing free ebooks. But now coming as a online book store.</p>
+                    <p>Folio has helped several computer science students to learn new skills by providing free ebooks.
+                        But now coming as a online book store.</p>
 
                     <p>Folio will also be equiped with some cool
                         features like.</p>
@@ -290,9 +291,12 @@
 <script type="text/javascript">
     $('document').ready(function () {
         $('#subscribe-form').ajaxForm({
-            target: '#preview',
-            success: function () {
-                $('#preview').addClass("show_message");
+            url: "{% url 'test' %}", // the endpoint
+            type: "POST", // http method
+            data: {email: $('#email').val()},
+            success: function (json) {
+                console.log(json); // log the returned json to the console
+                console.log("success"); // another sanity check
             }
         });
     });
