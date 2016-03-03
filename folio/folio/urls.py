@@ -20,8 +20,8 @@ from django.conf import settings
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', 'authentication.views.index', name='home'),
-    url(r'^fftest/', 'authentication.views.test', name='test'),
+    url(r'^$', 'authentication.views.test', name='test'),
+    #url(r'^fftest/', 'authentication.views.test', name='test'),
 
 ]
 
