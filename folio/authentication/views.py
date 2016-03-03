@@ -1,6 +1,11 @@
-from django.shortcuts import render_to_response
-from django.http import HttpResponse
+from django.shortcuts import render_to_response, RequestContext
+from .models import NewsLetter
 # Create your views here.
 
 def index(request):
-    return render_to_response('index.html')
+    if request.POST:
+        email = request.POST.get('email')
+        obj = NewsLetter.objects.create(email=email)
+        obj.save()
+    return render_to_response('comingsoon.html')
+
