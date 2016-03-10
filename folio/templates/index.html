@@ -293,7 +293,7 @@
 <script type="text/javascript">
     $('document').ready(function () {
         $('#subscribe-form').ajaxForm({
-            url: "{% url 'test' %}", // the endpoint
+            url: "{% url 'home' %}", // the endpoint
             type: "POST", // http method
             data: {email: $('#email').val()},
             success: function (json) {
