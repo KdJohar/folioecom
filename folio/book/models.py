@@ -84,9 +84,9 @@ class Books(models.Model):
     def save(self, *args, **kwargs):
         cost = int(self.cost_price)
         percent_margin = 15
-        paking_cost = 5
+        packing_cost = 5
         cost = cost + (cost*percent_margin)/100
-        self.selling_price = cost+paking_cost
+        self.selling_price = cost+packing_cost
         super(Books, self).save(*args, **kwargs)
 
 
@@ -108,11 +108,22 @@ class Inventory(models.Model):
     class Meta:
         verbose_name_plural = "Inventory"
 
+class SeoMetaData(models.Model):
 
-def create_inventory_for_book(sender, instance, created, **kwargs):
+    book = models.OneToOneField(Books)
+    title = models.CharField(max_length=250, blank=True, null=True)
+    keywords = models.TextField(blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
+
+    def __unicode__(self):
+        return self.book.title
+    class Meta:
+        verbose_name_plural = "Book Page Metadata"
+
+def create_inventory_seo_for_book(sender, instance, created, **kwargs):
     Inventory.objects.create(book=instance)
+    SeoMetaData.objects.create(book=instance)
 
 
 
-
-signals.post_save.connect(create_inventory_for_book, sender=Books)
+signals.post_save.connect(create_inventory_seo_for_book, sender=Books)
