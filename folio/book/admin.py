@@ -1,7 +1,7 @@
 from django.contrib import admin
-
-from .models import Author, Publisher, Category, SubCategory, Books
+from .models import Author, Publisher, Category, SubCategory, Books, Inventory
 # Register your models here.
+
 
 class BookAdmin(admin.ModelAdmin):
 
@@ -20,8 +20,15 @@ class CategoryAdmin(admin.ModelAdmin):
 
     prepopulated_fields = {"slug": ("name",)}
 
+
+class InventoryAdmin(admin.ModelAdmin):
+
+    list_display = ('book', 'quantity')
+    search_fields = ('book__title', )
+
 admin.site.register(Author)
 admin.site.register(Publisher)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(SubCategory, SubCategoryAdmin)
 admin.site.register(Books, BookAdmin)
+admin.site.register(Inventory, InventoryAdmin)

@@ -1,9 +1,11 @@
 from __future__ import unicode_literals
 from django.core.validators import RegexValidator
 from django.db import models
+from django.db.models import signals
 from django.utils.text import slugify
 
 # Create your models here.
+
 
 class Author(models.Model):
     name = models.CharField(max_length=250)
@@ -98,10 +100,19 @@ class Books(models.Model):
 
 class Inventory(models.Model):
 
-    book = models.ForeignKey(Books)
+    book = models.OneToOneField(Books)
     quantity = models.IntegerField(default=3)
 
     def __unicode__(self):
         return self.book.title
     class Meta:
-        verbose_name_plural = "Books"
+        verbose_name_plural = "Inventory"
+
+
+def create_inventory_for_book(sender, instance, created, **kwargs):
+    Inventory.objects.create(book=instance)
+
+
+
+
+signals.post_save.connect(create_inventory_for_book, sender=Books)
