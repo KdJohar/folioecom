@@ -114,6 +114,8 @@ class SeoMetaData(models.Model):
     title = models.CharField(max_length=250, blank=True, null=True)
     keywords = models.TextField(blank=True, null=True)
     description = models.TextField(blank=True, null=True)
+    seo_done = models.BooleanField(default=False)
+
 
     def __unicode__(self):
         return self.book.title
