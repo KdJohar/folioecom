@@ -18,14 +18,16 @@ class Publisher(models.Model):
         return self.name
 
 class Category(models.Model):
-    name = models.CharField(max_length=250)
+    name = models.CharField(max_length=250, unique=True)
+    slug = models.SlugField(max_length=250, unique=True, null=True)
 
     def __unicode__(self):
         return self.name
 
 class SubCategory(models.Model):
-    name = models.CharField(max_length=250)
-    category = models.ForeignKey(Category)
+    name = models.CharField(max_length=250, unique=True)
+    category = models.ForeignKey(Category, )
+    slug = models.SlugField(max_length=250, unique=True, null=True)
 
     def __unicode__(self):
         return self.name
