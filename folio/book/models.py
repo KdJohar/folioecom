@@ -11,11 +11,18 @@ class Author(models.Model):
     def __unicode__(self):
         return self.name
 
+    class Meta:
+        verbose_name_plural = "Author"
+
 class Publisher(models.Model):
     name = models.CharField(max_length=250)
 
     def __unicode__(self):
         return self.name
+
+    class Meta:
+        verbose_name_plural = "Publisher"
+
 
 class Category(models.Model):
     name = models.CharField(max_length=250, unique=True)
@@ -24,6 +31,9 @@ class Category(models.Model):
     def __unicode__(self):
         return self.name
 
+    class Meta:
+        verbose_name_plural = "Categories"
+
 class SubCategory(models.Model):
     name = models.CharField(max_length=250, unique=True)
     category = models.ForeignKey(Category, )
@@ -31,6 +41,10 @@ class SubCategory(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    class Meta:
+        verbose_name_plural = "SubCategories"
+
 
 def image_upload_to(instance, filename):
     title = slugify(instance.title)
@@ -77,3 +91,17 @@ class Books(models.Model):
 
     def __unicode__(self):
         return self.title
+
+    class Meta:
+        verbose_name_plural = "Books"
+
+
+class Inventory(models.Model):
+
+    book = models.ForeignKey(Books)
+    quantity = models.IntegerField(default=3)
+
+    def __unicode__(self):
+        return self.book.title
+    class Meta:
+        verbose_name_plural = "Books"
