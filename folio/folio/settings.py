@@ -27,6 +27,7 @@ SECRET_KEY = 'yet98h3v@uh!ve$)qvd5hs76@@u2^@)ba*s&jvq-e79q0s@$-u'
 # Application definition
 
 INSTALLED_APPS = [
+    'django_admin_bootstrapped',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -96,6 +97,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+
+DAB_FIELD_RENDERER = 'django_admin_bootstrapped.renderers.BootstrapFieldRenderer'
+
 
 try:
     from localsettings import *
