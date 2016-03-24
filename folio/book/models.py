@@ -64,8 +64,8 @@ class Books(models.Model):
         ('pb', 'paperback'),
     )
 
-    title = models.CharField(max_length=500, unique=True)
-    slug = models.CharField(max_length=500, unique=True)
+    title = models.CharField(max_length=500)
+    slug = models.SlugField(max_length=500, unique=True)
     image = models.ImageField(upload_to=image_upload_to)
     category = models.ForeignKey(SubCategory)
     isbn10 = models.CharField(validators=[RegexValidator(regex='^.{10}$', message='Length has to be 10')], max_length=10)
