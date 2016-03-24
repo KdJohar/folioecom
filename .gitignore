@@ -8,5 +8,4 @@ folio/.idea/folio.iml
 folio/folio/localsettings.py
 
 media/book/dive-in-python/dive-in-python_sahlNQQ.jpg
-
-*.jpg
+media/*
