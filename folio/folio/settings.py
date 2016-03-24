@@ -27,7 +27,6 @@ SECRET_KEY = 'yet98h3v@uh!ve$)qvd5hs76@@u2^@)ba*s&jvq-e79q0s@$-u'
 # Application definition
 
 INSTALLED_APPS = [
-    'django_admin_bootstrapped',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -35,7 +34,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'authentication',
+    'ckeditor',
+    'ckeditor_uploader',
     'book',
+    'blogs',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -51,6 +53,15 @@ MIDDLEWARE_CLASSES = [
 
 ROOT_URLCONF = 'folio.urls'
 
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        'height': 500,
+        'width': 1200,
+        'skin': 'moono',
+
+    },
+}
 
 WSGI_APPLICATION = 'folio.wsgi.application'
 
@@ -95,10 +106,11 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
+CKEDITOR_UPLOAD_PATH = "editor_uploads/"
+CKEDITOR_IMAGE_BACKEND = 'pillow'
 
 STATIC_URL = '/static/'
 
-DAB_FIELD_RENDERER = 'django_admin_bootstrapped.renderers.BootstrapFieldRenderer'
 
 
 try:
