@@ -9,8 +9,7 @@ def index(request):
 
 
 def demo(request):
-    return render_to_response('ecommerce/index.html')
-
-
-def demo2(request):
     return render_to_response('ecommerce/index2.html')
+
+def bookdetail(request):
+    return render_to_response('ecommerce/bookdetail.html')
