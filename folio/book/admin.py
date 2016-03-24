@@ -30,6 +30,7 @@ class SeoMetaDataAdmin(admin.ModelAdmin):
 
     list_display = ('book', 'seo_done', )
     search_fields = ('book__title', )
+    list_filter = ('seo_done'),
 
 admin.site.register(Author)
 admin.site.register(Publisher)
