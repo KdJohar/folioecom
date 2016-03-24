@@ -22,6 +22,8 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', 'authentication.views.index', name='home'),
     url(r'^demo/$', 'authentication.views.demo', name='demo'),
+    url(r'^demo2/$', 'authentication.views.demo2', name='demo2'),
+
 
 ]
 
