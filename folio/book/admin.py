@@ -5,10 +5,11 @@ from .models import Author, Publisher, Category, SubCategory, Books, Inventory, 
 
 class BookAdmin(admin.ModelAdmin):
 
-    list_display = ('title', 'category', 'isbn10', 'isbn13', 'cost_price', 'selling_price')
-    list_filter = ('category', 'author', 'publisher')
+    list_display = ('title', 'category', 'isbn10', 'isbn13', 'cost_price', 'selling_price', )
+    list_filter = ('category', 'author', 'publisher', )
     search_fields = ('title', )
-    prepopulated_fields = {"slug": ("title",)}
+    list_editable = ('selling_price', )
+    # prepopulated_fields = {"slug": ("title",)}
 
 class SubCategoryAdmin(admin.ModelAdmin):
 
@@ -25,6 +26,7 @@ class InventoryAdmin(admin.ModelAdmin):
 
     list_display = ('book', 'quantity')
     search_fields = ('book__title', )
+    list_editable = ('quantity', )
 
 class SeoMetaDataAdmin(admin.ModelAdmin):
 

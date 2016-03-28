@@ -65,7 +65,7 @@ class Books(models.Model):
     )
 
     title = models.CharField(max_length=255, unique=True)
-    slug = models.SlugField(max_length=255, unique=True)
+    slug = models.SlugField(max_length=255, unique=True, blank=True)
     image = models.ImageField(upload_to=image_upload_to)
     category = models.ForeignKey(SubCategory)
     isbn10 = models.CharField(validators=[RegexValidator(regex='^.{10}$', message='Length has to be 10')], max_length=10)
@@ -82,11 +82,14 @@ class Books(models.Model):
 
 
     def save(self, *args, **kwargs):
-        cost = int(self.cost_price)
-        percent_margin = 15
-        packing_cost = 5
-        cost = cost + (cost*percent_margin)/100
-        self.selling_price = cost+packing_cost
+
+        self.slug = slugify(self.title)
+        if self.selling_price == None:
+            cost = int(self.cost_price)
+            percent_margin = 15
+            packing_cost = 5
+            cost = cost + (cost*percent_margin)/100
+            self.selling_price = cost+packing_cost
         super(Books, self).save(*args, **kwargs)
 
 
@@ -123,8 +126,9 @@ class SeoMetaData(models.Model):
         verbose_name_plural = "Book Page Metadata"
 
 def create_inventory_seo_for_book(sender, instance, created, **kwargs):
-    Inventory.objects.create(book=instance)
-    SeoMetaData.objects.create(book=instance)
+    if created:
+        Inventory.objects.create(book=instance)
+        SeoMetaData.objects.create(book=instance)
 
 
 
