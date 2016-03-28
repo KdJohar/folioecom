@@ -33,12 +33,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'authentication',
     'ckeditor',
     'ckeditor_uploader',
     'book',
     'blogs',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+
 ]
+
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
@@ -103,15 +109,33 @@ USE_L10N = True
 
 USE_TZ = True
 
+STATIC_URL = '/static/'
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.9/howto/static-files/
+# Ckeditor settings
+
 CKEDITOR_UPLOAD_PATH = "editor_uploads/"
 CKEDITOR_IMAGE_BACKEND = 'pillow'
 
-STATIC_URL = '/static/'
+# all auth settings
 
+SITE_ID = 1
 
+AUTHENTICATION_BACKENDS = (
+    #'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+
+# Email settings
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_PASSWORD = 'xqpdcjfxeqwnumrq'
+EMAIL_HOST_USER = 'kdjohar91@gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 
 try:
     from localsettings import *

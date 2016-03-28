@@ -19,6 +19,7 @@ from django.contrib import admin
 from django.conf import settings
 
 urlpatterns = [
+    url(r'^accounts/', include('allauth.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
     url(r'^$', 'authentication.views.index', name='home'),
