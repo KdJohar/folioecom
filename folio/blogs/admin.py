@@ -21,3 +21,4 @@ class BlogAdmin(admin.ModelAdmin):
 
 admin.site.register(Categories, CategoryAdmin)
 admin.site.register(Blogs, BlogAdmin)
+admin.site.site_header = 'Folio Administration'
