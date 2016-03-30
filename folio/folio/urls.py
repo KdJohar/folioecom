@@ -26,7 +26,6 @@ urlpatterns = [
     url(r'^demo/$', 'authentication.views.demo', name='demo'),
     url(r'^demo2/$', 'authentication.views.bookdetail', name='demo2'),
 
-
 ]
 
 

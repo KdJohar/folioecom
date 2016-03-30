@@ -9,7 +9,7 @@ def index(request):
 
 
 def demo(request):
-    return render_to_response('ecommerce/index2.html')
+    return render_to_response('ecommerce/index2.html', context_instance=RequestContext(request))
 
 def bookdetail(request):
-    return render_to_response('ecommerce/bookdetail.html')
+    return render_to_response('ecommerce/bookdetail.html', context_instance=RequestContext(request))
