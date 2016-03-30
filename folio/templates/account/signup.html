@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--================================================================================
+	Item Name: Materialize - Material Design Admin Template
+	Version: 3.1
+	Author: GeeksLabs
+	Author URL: http://www.themeforest.net/user/geekslabs
+================================================================================ -->
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="description"
+          content="Materialize is a Material Design Admin Template,It's modern, responsive and based on Material Design by Google. ">
+    <meta name="keywords"
+          content="materialize, admin template, dashboard template, flat admin template, responsive admin template,">
+    <title>Login Page | Materialize - Material Design Admin Template</title>
+
+    <!-- Favicons-->
+    <link rel="icon" href="/static/ecommerce/images/favicon/favicon-32x32.png" sizes="32x32">
+    <!-- Favicons-->
+    <link rel="apple-touch-icon-precomposed" href="/static/ecommerce/images/favicon/apple-touch-icon-152x152.png">
+    <!-- For iPhone -->
+    <meta name="msapplication-TileColor" content="#00bcd4">
+    <meta name="msapplication-TileImage" content="/static/ecommerce/images/favicon/mstile-144x144.png">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    <!-- For Windows Phone -->
+
+
+    <!-- CORE CSS-->
+    {% include 'ecommerce/base/css.html' %}
+    <link href="/static/ecommerce/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href="/static/ecommerce/css/style.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <!-- Custome CSS-->
+    <link href="/static/ecommerce/css/custom/custom.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href="/static/ecommerce/css/layouts/page-center.css" type="text/css" rel="stylesheet"
+          media="screen,projection">
+
+    <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
+    <link href="/static/ecommerce/js/plugins/prism/prism.css" type="text/css" rel="stylesheet"
+          media="screen,projection">
+    <link href="/static/ecommerce/js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet"
+          media="screen,projection">
+
+</head>
+
+<body class="">
+<!-- Start Page Loading -->
+
+<!-- End Page Loading -->
+
+
+<div id="login-page" class="row">
+    <div class="col s12 z-depth-4 card-panel">
+        <form action="{% url 'account_signup' %}" method="post" class="login-form"> {% csrf_token %}
+            <div class="row">
+                <div class="input-field col s12 center">
+                    <img src="/static/ecommerce/images/Folio_logo.png" alt=""
+                         class="circle responsive-img valign profile-image-login cyan">
+
+                    <p class="center login-form-text">Sign Up</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12 m12 l12 center">
+                    <a class="waves-effect waves-light btn" href="/accounts/facebook/login/?process=login"
+                       style="background-color: #3a5795;"><i class="fa fa-facebook-official"></i>&nbsp;facebook</a>
+
+                    <p class="center login-form-text">or</p>
+                </div>
+                {{ form.non_field_errors.as_text }}
+            </div>
+
+            <div class="row margin">
+
+                <div class="input-field col s12">
+                    <i class="mdi-social-person-outline prefix"></i>
+                    <input id="username" name="email" type="email">
+                    <label data-error="wrong" data-success="right" for="username" class="center-align">Email</label>
+                </div>
+                <p>{{ form.email.errors.as_text }}</p>
+
+            </div>
+            <div class="row margin">
+
+                <div class="input-field col s12">
+                    <i class="mdi-action-lock-outline prefix"></i>
+                    <input id="password" name="password1" type="password">
+                    <label for="password">Password</label>
+                </div>
+
+                <p>{{ form.password1.errors.as_text }}</p>
+
+            </div>
+
+            <div class="row margin">
+
+                <div class="input-field col s12">
+                    <i class="mdi-action-lock-outline prefix"></i>
+                    <input id="password" name="password2" type="password">
+                    <label for="password">Password(again)</label>
+                </div>
+                {% if form.password2.errors %}
+                    <p>{{ form.password2.errors.as_text }}</p>
+                {% endif %}
+            </div>
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <button class="btn waves-effect waves-light col s12" type="submit">Register</button>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="input-field col s12 m12 l12">
+                    <p class="margin medium-small">Already have account <a href="{% url 'account_login' %}">sign in!</a></p>
+                </div>
+
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+<!-- ================================================
+  Scripts
+  ================================================ -->
+
+<!-- jQuery Library -->
+<script type="text/javascript" src="/static/ecommerce/js/plugins/jquery-1.11.2.min.js"></script>
+<!--materialize js-->
+<script type="text/javascript" src="/static/ecommerce/js/materialize.min.js"></script>
+<!--prism-->
+<script type="text/javascript" src="/static/ecommerce/js/plugins/prism/prism.js"></script>
+<!--scrollbar-->
+<script type="text/javascript" src="/static/ecommerce/js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+
+<!--plugins.js - Some Specific JS codes for Plugin Settings-->
+<script type="text/javascript" src="/static/ecommerce/js/plugins.min.js"></script>
+<!--custom-script.js - Add your own theme custom JS-->
+<script type="text/javascript" src="/static/ecommerce/js/custom-script.js"></script>
+
+</body>
+
+</html>

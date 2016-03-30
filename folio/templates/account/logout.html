@@ -1,0 +1,38 @@
+{% extends 'ecommerce/base/base.html' %}
+{% block main_content %}
+    <div class="container">
+        <div class="section">
+            <h4>Sign Out</h4>
+
+            <p>Are you sure you want to sign out?</p>
+
+            <form method="post" action="{% url 'account_logout' %}">
+                {% csrf_token %}
+                {% if redirect_field_value %}
+                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+                {% endif %}
+                <button class="waves-effect waves-light btn" type="submit">Sign Out</button>
+            </form>
+
+
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+    </div>
+{% endblock %}
