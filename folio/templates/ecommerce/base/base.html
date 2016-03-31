@@ -39,6 +39,7 @@
 
 <!-- START HEADER -->
 {% include 'ecommerce/base/header.html' %}
+
 <!-- END HEADER -->
 
 <!-- //////////////////////////////////////////////////////////////////////////// -->
@@ -56,6 +57,10 @@
 
         <!-- START CONTENT -->
         <section id="content">
+        <div class="header-search-wrapper grey hide-on-large-only" style="z-index: 2;position: fixed;">
+            <i class="mdi-action-search active"></i>
+            <input type="text" name="Search" class="header-search-input z-depth-2" placeholder="Search">
+        </div>
             {% block main_content %}
             {% endblock %}
             <!--breadcrumbs start-->
@@ -89,10 +94,11 @@ Scripts
 
 <!-- jQuery Library -->
 {% include 'ecommerce/base/scripts.html' %}
-<!-- Toast Notification
+
 
 {% include 'ecommerce/base/notification.html' %}
--->
+
+
 </body>
 
 </html>
